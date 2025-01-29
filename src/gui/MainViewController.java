@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class MainViewController implements Initializable {
@@ -34,7 +35,7 @@ public class MainViewController implements Initializable {
 
 	@FXML
 	public void onMenuItemDepartmentAction() {
-		System.out.println("Department");
+		loadView("/gui/DepartmentList.fxml");
 	}
 
 	@FXML
@@ -52,10 +53,13 @@ public class MainViewController implements Initializable {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			VBox newVBox = loader.load();
+			Pane pane = new Pane();
+			
 			
 			Scene mainScene = Main.getMainScene();
 			VBox mainVBox= (VBox) ((ScrollPane) mainScene.getRoot()).getContent();
 			
+		
 			Node mainMenu = mainVBox.getChildren().get(0);
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
